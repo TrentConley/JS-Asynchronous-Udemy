@@ -11,10 +11,14 @@ request.send();
 
 request.addEventListener("load", function () {
   const [data] = JSON.parse(this.responseText); //parsing returns an array of one object, so we destructure
-  console.log(data);
-  const dataLang = data.languages;
+  const name = data.name.common;
+  const flag = data.flags.svg;
+  const region = data.region;
+  const language = Object.values(data.languages)[0];
+  const currency = Object.values(data.currencies)[0].name;
+
   //   console.log(type(dataLang));
-  console.log(data.languages.values);
+
   const html = ` <article class="country">
   <img class="country__img" src="${data.flag}" />
   <div class="country__data">
