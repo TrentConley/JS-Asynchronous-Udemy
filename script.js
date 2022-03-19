@@ -37,3 +37,7 @@ const getCountryData = function (country) {
     countriesContainer.style.opacity = 1;
   }); // waiting for event of data loading
 };
+
+getCountryData("ireland");
+getCountryData("usa");
+getCountryData("spain");
