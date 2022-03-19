@@ -60,19 +60,13 @@ const getCountryDataAndNeighbor = function (country) {
 };
 */
 
-const getCountryDataAndNeighbor = function (country) {
+const getCountryData = function (country) {
   const request = fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function ([data]) {
-      renderCountry(data);
-      const neighbors = data.borders;
-      console.log(data);
-    }); //request is promise
-  //
+    .then(response => response.json())
+    .then(([data]) => renderCountry(data)); //request is promise
 };
 // getCountryDataAndNeighbor("ireland");
 // getCountryDataAndNeighbor("usa");
-getCountryDataAndNeighbor("vietnam");
+// getCountryDataAndNeighbor("vietnam");
+getCountryData("vietnam");
 // asynch functions, js will move on after each ajax call
