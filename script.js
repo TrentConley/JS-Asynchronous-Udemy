@@ -4,6 +4,7 @@ const btn = document.querySelector(".btn-country");
 const countriesContainer = document.querySelector(".countries");
 
 ///////////////////////////////////////
+
 const renderCountry = function (data) {
   const name = data.name.common;
   const flag = data.flags.svg;
@@ -28,7 +29,7 @@ const renderCountry = function (data) {
   countriesContainer.style.opacity = 1;
 };
 
-const getCountryData = function (country) {
+const getCountryDataAndNeighbor = function (country) {
   const request = new XMLHttpRequest();
 
   request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
@@ -40,7 +41,7 @@ const getCountryData = function (country) {
   }); // waiting for event of data loading
 };
 
-getCountryData("ireland");
-getCountryData("usa");
-getCountryData("portugal");
+getCountryDataAndNeighbor("ireland");
+getCountryDataAndNeighbor("usa");
+getCountryDataAndNeighbor("portugal");
 // asynch functions, js will move on after each ajax call
