@@ -20,15 +20,24 @@ request.addEventListener("load", function () {
   //   console.log(type(dataLang));
 
   const html = ` <article class="country">
-  <img class="country__img" src="${data.flag}" />
+  <img class="country__img" src="${flag}" />
   <div class="country__data">
-    <h3 class="country__name">${data.name}</h3>
-    <h4 class="country__region">${data.region}</h4>
+    <h3 class="country__name">${name}</h3>
+    <h4 class="country__region">${region}</h4>
     <p class="country__row"><span>👫</span>${(
       +data.population / 1000000
     ).toFixed(1)} people</p>
-    <p class="country__row"><span>🗣️</span>${data.languages}</p>
-    <p class="country__row"><span>💰</span>CUR</p>
+    <p class="country__row"><span>🗣️</span>${language}</p>
+    <p class="country__row"><span>💰</span>${currency}</p>
   </div>
 </article>`;
 }); // waiting for event of data loading
+const people = [1, 2, 3, 4];
+let person1Index = Math.floor(Math.random() * people.length);
+let person2Index = Math.floor(Math.random() * people.length);
+while (person1Index === person2Index)
+  person2Index = Math.floor(Math.random() * people.length);
+console.log(person1Index, person2Index);
+const s1 = "hello";
+const s2 = "hello";
+console.log(s1 === s2);
