@@ -61,11 +61,15 @@ const getCountryDataAndNeighbor = function (country) {
 */
 
 const getCountryDataAndNeighbor = function (country) {
-  const request = fetch(`https://restcountries.com/v3.1/name/${country}`).then(
-    function (response) {
-      console.log(response);
-    }
-  ); //request is promise
+  const request = fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function ([data]) {
+      renderCountry(data);
+      const neighbors = data.borders;
+      console.log(data);
+    }); //request is promise
   //
 };
 // getCountryDataAndNeighbor("ireland");
