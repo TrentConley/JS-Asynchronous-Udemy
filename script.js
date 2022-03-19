@@ -29,6 +29,7 @@ const renderCountry = function (data, className = "") {
   countriesContainer.style.opacity = 1;
 };
 
+/*
 const getCountryDataAndNeighbor = function (country) {
   const request = new XMLHttpRequest();
 
@@ -56,6 +57,11 @@ const getCountryDataAndNeighbor = function (country) {
       });
     }
   }); // waiting for event of data loading
+};
+*/
+
+const getCountryDataAndNeighbor = function (country) {
+  const request = fetch(`https://restcountries.com/v3.1/name/${country}`);
 };
 
 // getCountryDataAndNeighbor("ireland");
