@@ -37,7 +37,14 @@ const getCountryDataAndNeighbor = function (country) {
 
   request.addEventListener("load", function () {
     const [data] = JSON.parse(this.responseText); //parsing returns an array of one object, so we destructure
+    // get country 1
     renderCountry(data);
+
+    // get country 2
+    const [neighbor] = data.borders;
+    if (!neighbor) return; // some countries will not have neighbor
+
+    // AJAX call for country 2
   }); // waiting for event of data loading
 };
 
