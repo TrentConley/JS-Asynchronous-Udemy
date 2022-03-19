@@ -4,23 +4,14 @@ const btn = document.querySelector(".btn-country");
 const countriesContainer = document.querySelector(".countries");
 
 ///////////////////////////////////////
-const getCountryData = function (country) {
-  const request = new XMLHttpRequest();
+const renderCountry = function (data) {
+  const name = data.name.common;
+  const flag = data.flags.svg;
+  const region = data.region;
+  const [language] = Object.values(data.languages);
+  const currency = Object.values(data.currencies)[0].name;
 
-  request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
-  request.send();
-
-  request.addEventListener("load", function () {
-    const [data] = JSON.parse(this.responseText); //parsing returns an array of one object, so we destructure
-    const name = data.name.common;
-    const flag = data.flags.svg;
-    const region = data.region;
-    const [language] = Object.values(data.languages);
-    const currency = Object.values(data.currencies)[0].name;
-
-    //   console.log(type(dataLang));
-
-    const html = ` <article class="country">
+  const html = ` <article class="country">
   <img class="country__img" src="${flag}" />
   <div class="country__data">
     <h3 class="country__name">${name}</h3>
@@ -33,11 +24,23 @@ const getCountryData = function (country) {
   </div>
 </article>`;
 
-    countriesContainer.insertAdjacentHTML("beforeend", html);
-    countriesContainer.style.opacity = 1;
+  countriesContainer.insertAdjacentHTML("beforeend", html);
+  countriesContainer.style.opacity = 1;
+};
+
+const getCountryData = function (country) {
+  const request = new XMLHttpRequest();
+
+  request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
+  request.send();
+
+  request.addEventListener("load", function () {
+    const [data] = JSON.parse(this.responseText); //parsing returns an array of one object, so we destructure
+    renderCountry(data);
   }); // waiting for event of data loading
 };
 
 getCountryData("ireland");
 getCountryData("usa");
-getCountryData("spain");
+getCountryData("portugal");
+// asynch functions, js will move on after each ajax call
