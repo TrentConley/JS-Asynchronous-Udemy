@@ -45,6 +45,10 @@ const getCountryDataAndNeighbor = function (country) {
     if (!neighbor) return; // some countries will not have neighbor
 
     // AJAX call for country 2
+    const request2 = new XMLHttpRequest();
+    //alpha is to search for neighbor
+    request2.open("GET", `https://restcountries.com/v3.1/alpha/${neighbor}`);
+    request2.send();
   }); // waiting for event of data loading
 };
 
