@@ -32,12 +32,3 @@ request.addEventListener("load", function () {
   </div>
 </article>`;
 }); // waiting for event of data loading
-const people = [1, 2, 3, 4];
-let person1Index = Math.floor(Math.random() * people.length);
-let person2Index = Math.floor(Math.random() * people.length);
-while (person1Index === person2Index)
-  person2Index = Math.floor(Math.random() * people.length);
-console.log(person1Index, person2Index);
-const s1 = "hello";
-const s2 = "hello";
-console.log(s1 === s2);
