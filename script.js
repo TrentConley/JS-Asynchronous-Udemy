@@ -14,7 +14,7 @@ request.addEventListener("load", function () {
   const name = data.name.common;
   const flag = data.flags.svg;
   const region = data.region;
-  const language = Object.values(data.languages)[0];
+  const [language] = Object.values(data.languages);
   const currency = Object.values(data.currencies)[0].name;
 
   //   console.log(type(dataLang));
