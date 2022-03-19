@@ -66,7 +66,9 @@ const getCountryData = function (country) {
     .then(([data]) => {
       const neighbors = data.borders;
       for (const neighbor of neighbors) {
-        fetch(`https://restcountries.com/v3.1/alpha/${neighbor}`);
+        fetch(`https://restcountries.com/v3.1/alpha/${neighbor}`)
+          .then(response => response.json())
+          .then(([data]) => renderCountry(data));
       }
       renderCountry(data);
     }); //request is promise
