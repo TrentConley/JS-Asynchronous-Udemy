@@ -63,7 +63,13 @@ const getCountryDataAndNeighbor = function (country) {
 const getCountryData = function (country) {
   const request = fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then(response => response.json())
-    .then(([data]) => renderCountry(data)); //request is promise
+    .then(([data]) => {
+      const neighbors = data.borders;
+      for (const neighbor of neighbors) {
+        fetch(`https://restcountries.com/v3.1/alpha/${neighbor}`);
+      }
+      renderCountry(data);
+    }); //request is promise
 };
 // getCountryDataAndNeighbor("ireland");
 // getCountryDataAndNeighbor("usa");
