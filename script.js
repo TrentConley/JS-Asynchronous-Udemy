@@ -61,9 +61,13 @@ const getCountryDataAndNeighbor = function (country) {
 */
 
 const getCountryDataAndNeighbor = function (country) {
-  const request = fetch(`https://restcountries.com/v3.1/name/${country}`);
+  const request = fetch(`https://restcountries.com/v3.1/name/${country}`).then(
+    function (response) {
+      console.log(response);
+    }
+  ); //request is promise
+  //
 };
-
 // getCountryDataAndNeighbor("ireland");
 // getCountryDataAndNeighbor("usa");
 getCountryDataAndNeighbor("vietnam");
