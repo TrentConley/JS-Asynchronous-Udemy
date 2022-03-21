@@ -17,11 +17,5 @@ const whereAmI = function (lat, lng) {
       //our error object is stored in err
       console.log(`Something went wrong, ${err}`);
     });
-
-  // use data to look at attributes in console
-  //
-  // then print something like "You are in Franklin, Tennessee" to the console.
-  //
-  // chain a .catch method to the end of the promise and log any errors
 };
 whereAmI(52.508, 13.381);
