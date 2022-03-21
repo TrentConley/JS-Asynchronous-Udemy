@@ -11,13 +11,7 @@ const whereAmI = function (lat, lng) {
       //will return result of promise response.json
     })
     .then(data => {
-      console.log(data);
-      if (!data) {
-        throw new Error("There is no data.");
-      }
-      //  turn response into workable data, handle errors
       console.log(`You are in ${data.city}, ${data.country}`);
-      //   const [data] = responseJSON;
     })
     .catch(err => {
       //our error object is stored in err
