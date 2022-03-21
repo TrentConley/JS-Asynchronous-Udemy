@@ -68,7 +68,7 @@ const getCountryData = function (country) {
       for (const neighbor of neighbors) {
         fetch(`https://restcountries.com/v3.1/alpha/${neighbor}`)
           .then(response => response.json())
-          .then(([data]) => renderCountry(data));
+          .then(([data]) => renderCountry(data, "neighbour"));
       }
       renderCountry(data);
     }); //request is promise
@@ -76,5 +76,5 @@ const getCountryData = function (country) {
 // getCountryDataAndNeighbor("ireland");
 // getCountryDataAndNeighbor("usa");
 // getCountryDataAndNeighbor("vietnam");
-getCountryData("vietnam");
+getCountryData("monaco");
 // asynch functions, js will move on after each ajax call
