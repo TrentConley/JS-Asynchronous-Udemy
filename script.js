@@ -85,6 +85,7 @@ const whereAmI = function (lat, lng) {
     })
     .then(data => {
       console.log(`You are in ${data.city}, ${data.country}`);
+      getCountryData(data.country);
     })
     .catch(err => {
       //our error object is stored in err
@@ -96,5 +97,5 @@ whereAmI(52.508, 13.381);
 // getCountryDataAndNeighbor("ireland");
 // getCountryDataAndNeighbor("usa");
 // getCountryDataAndNeighbor("vietnam");
-getCountryData("monaco");
+// getCountryData("monaco");
 // asynch functions, js will move on after each ajax call
