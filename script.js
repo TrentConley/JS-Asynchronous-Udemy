@@ -31,6 +31,3 @@ const whereAmI = function (lat, lng) {
   // chain a .catch method to the end of the promise and log any errors
 };
 whereAmI(52.508, 13.381);
-whereAmI(52.508, 13.381);
-whereAmI(52.508, 13.381);
-whereAmI(52.508, 13.381);
