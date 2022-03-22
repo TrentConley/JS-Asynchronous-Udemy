@@ -93,7 +93,7 @@ const whereAmI = function (lat, lng) {
     });
 };
 // whereAmI(52.508, 13.381);
-whereAmI(19.037, 72.873);
+// whereAmI(19.037, 72.873);
 // whereAmI(-33.933, 18.474);
 
 // getCountryDataAndNeighbor("ireland");
@@ -107,11 +107,19 @@ const whereAmI2 = async function (country) {
   const response = await fetch(
     `https://restcountries.com/v3.1/name/${country}`
   );
+  const [data] = await response.json();
+  renderCountry(data);
+  for (const neighbor of data.borders) {
+    const neighborResponse = await fetch(
+      `https://restcountries.com/v3.1/alpha/${neighbor}`
+    );
+    const [neighborData] = await neighborResponse.json();
+    renderCountry(neighborData);
+  }
   //async await is syntatical sugar for promises
-  console.log(response);
 
-  fetch(`https://restcountries.com/v3.1/name/${country}`).then(response =>
-    console.log(response)
-  ); //exactly the same as await above
+  // fetch(`https://restcountries.com/v3.1/name/${country}`).then(response =>
+  //   console.log(response)
+  // ); //exactly the same as await above
 };
 whereAmI2("India");
