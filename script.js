@@ -101,3 +101,7 @@ whereAmI(19.037, 72.873);
 // getCountryDataAndNeighbor("vietnam");
 // getCountryData("monaco");
 // asynch functions, js will move on after each ajax call
+const whereAmI2 = async function (country) {
+  //inside async function we can have multiple await functions.
+  await fetch(`https://restcountries.com/v3.1/name/${country}`);
+};
