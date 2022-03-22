@@ -104,19 +104,26 @@ const whereAmI = function (lat, lng) {
 const whereAmI2 = async function (country) {
   //inside async function we can have multiple await functions.
   // await will stop execution of code until data has been fetched in this case
-  const response = await fetch(
-    `https://restcountries.com/v3.1/name/${country}`
-  );
-  const [data] = await response.json();
-  renderCountry(data);
-  for (const neighbor of data.borders) {
-    const neighborResponse = await fetch(
-      `https://restcountries.com/v3.1/alpha/${neighbor}`
+  try {
+    const response = await fetch(
+      `https://restcountries.com/v3.1/name/${country}`
     );
-    const [neighborData] = await neighborResponse.json();
-    renderCountry(neighborData);
-  }
-  //async await is syntatical sugar for promises
+    if (!response.ok) throw new Error("Problem getting country data");
+
+    const [data] = await response.json();
+    renderCountry(data);
+
+    //renders bordering countries
+    for (const neighbor of data.borders) {
+      const neighborResponse = await fetch(
+        `https://restcountries.com/v3.1/alpha/${neighbor}`
+      );
+      const [neighborData] = await neighborResponse.json();
+      renderCountry(neighborData);
+    }
+  } catch (err) {
+    console.log(err);
+  } //async await is syntatical sugar for promises
 
   // fetch(`https://restcountries.com/v3.1/name/${country}`).then(response =>
   //   console.log(response)
