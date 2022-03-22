@@ -9,3 +9,6 @@ const lotteryPromise = new Promise(function (resolve, reject) {
     reject("you lose!");
   }
 });
+lotteryPromise
+  .then(resultion => console.log(resultion))
+  .catch(err => console.log(err));
