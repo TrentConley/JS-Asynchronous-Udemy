@@ -10,7 +10,7 @@ const lotteryPromise = new Promise(function (resolve, reject) {
     } else {
       reject("you lose!");
     }
-  }, 3000);
+  }, 00);
 });
 lotteryPromise
   .then(resultion => console.log(resultion))
@@ -18,3 +18,11 @@ lotteryPromise
 console.log("hi there");
 
 //promisifying --> wrap up old callback behavior to promise behavior
+
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+wait(2).then(() => console.log(`Waited for 2 seconds`));
+console.log(`hello world`);
