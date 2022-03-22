@@ -103,5 +103,15 @@ whereAmI(19.037, 72.873);
 // asynch functions, js will move on after each ajax call
 const whereAmI2 = async function (country) {
   //inside async function we can have multiple await functions.
-  await fetch(`https://restcountries.com/v3.1/name/${country}`);
+  // await will stop execution of code until data has been fetched in this case
+  const response = await fetch(
+    `https://restcountries.com/v3.1/name/${country}`
+  );
+  //async await is syntatical sugar for promises
+  console.log(response);
+
+  fetch(`https://restcountries.com/v3.1/name/${country}`).then(response =>
+    console.log(response)
+  ); //exactly the same as await above
 };
+whereAmI2("India");
